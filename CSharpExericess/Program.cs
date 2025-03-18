@@ -151,10 +151,52 @@ namespace FirstTask
              {
                  Console.WriteLine(Num1+Num2);
             */
+            //-----------------------------------------------------------------------------------------
 
             // secound Exericess
-            /*
-             * 1
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("\nSelect a Program:");
+                Console.WriteLine("1. Simple Calculator");
+                Console.WriteLine("2. Basic ATM System");
+                Console.WriteLine("3. Geometry Calculator");
+                Console.WriteLine("4. Factorial of a Number");
+                Console.WriteLine("5. Sum of Even and Odd Numbers");
+                Console.WriteLine("6. Scientific Calculator");
+                Console.WriteLine("7. Print Triangle Pattern");
+                Console.WriteLine("8. Print Pyramid Pattern");
+                Console.WriteLine("9. Print Diamond Pattern");
+                Console.WriteLine("10. Guess the Number Game");
+                Console.WriteLine("0. Exit");
+
+                Console.Write("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1: SimpleCalculator(); break;
+                    case 2: BasicATM(); break;
+                    case 3: GeometryCalculator(); break;
+                    case 4: Factorial(); break;
+                    case 5: SumEvenOdd(); break;
+                    case 6: ScientificCalculator(); break;
+                    case 7: PrintTriangle(); break;
+                    case 8: PrintPyramid(); break;
+                    case 9: PrintDiamond(); break;
+                    case 10: GuessGame(); break;
+                    case 0: return;
+                    default: Console.WriteLine("Invalid Choice! Try again."); break;
+                }
+                Console.ReadLine();
+            }
+        }
+
+
+        //1. Simple Calculator
+        static void SimpleCalculator()
+        {
+
             Console.WriteLine("Enter the operation number :\n1. Addition\n2. Subtraction ");
             Console.WriteLine("3. Multiplication\n4. Division");
             int OperationNumber = int.Parse(Console.ReadLine());
@@ -172,18 +214,18 @@ namespace FirstTask
                     break;
 
 
-                    case 2:
+                case 2:
                     result = FirstNumber - SecondNumber;
                     break;
 
 
-                    case 3:
-                        result = FirstNumber * SecondNumber;
-                        break;
+                case 3:
+                    result = FirstNumber * SecondNumber;
+                    break;
 
 
 
-                    case 4:
+                case 4:
                     if (SecondNumber == 0)
                     {
                         Console.WriteLine("Division by zero not allowed");
@@ -193,280 +235,297 @@ namespace FirstTask
                     {
                         result = FirstNumber / SecondNumber;
                     }
-                            break;
-
-                        default:
-                            Console.WriteLine("This choies Not Found!!");
-                            isactive = true;
                     break;
-                        }
-                    if (!isactive) {
+
+                default:
+                    Console.WriteLine("This choies Not Found!!");
+                    isactive = true;
+                    break;
+            }
+            if (!isactive)
+            {
                 Console.WriteLine(result);
-                     }*/
-            //------------------------------------------------------------------------------------------------------------------------------------------------------
-            //3. Geometry Calculator 
+            }
+        }
 
-            //Console.WriteLine("choos one shapes: \n");
 
-            //Console.WriteLine("1. Circle (Calculate Area & Circumference),2. Square (Calculate Area & Perimeter),3. Triangle (Calculate Area) \n ");
-            //char shape = char.Parse(Console.ReadLine());
+        //2. Basic ATM System
+        static void BasicATM()
+        {
 
-            //switch (shape)
-            //{
-            //    case '1':
-            //        Console.WriteLine("Enter the redius: \n");
-            //        double redius = double.Parse(Console.ReadLine());
-            //        double area = Math.PI * redius * redius;
-            //        double  Circumference = 2 * Math.PI * redius;
-            //        Console.WriteLine("Area: "+area+"\nCircumference "+ Circumference);
+            double balance = 1000;
+            while (true)
+            {
+                Console.WriteLine("\nATM menu:");
+                Console.WriteLine("1.Withdraw");
+                Console.WriteLine("2.Debost");
+                Console.WriteLine("3.Check Balance");
+                Console.WriteLine("4.Exite");
+                Console.WriteLine("Enter your choice: ");
+                int choice = int.Parse(Console.ReadLine());
 
-            //        break;
-            //    case '2':
-            //        Console.WriteLine("Enter the side: \n");
-            //        double side = double.Parse(Console.ReadLine());
-            //         area = side * side;
-            //        double Perimeter = 4 * side;
-            //        Console.WriteLine("Area: "+area +"\nPerimeter: " +Perimeter);
-            //        break;
 
-            //    case '3':
-            //        Console.WriteLine("Enter height:\n");
-            //        double height = double.Parse(Console.ReadLine());
-            //        Console.WriteLine("Enter height:\n");
-            //        double  length = double.Parse(Console.ReadLine());
-            //        area = 0.5 * length * height;
-            //        Console.WriteLine("Area: " +area);
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("Enter Amount to withdraw");
+                        int WithdrawAmount = int.Parse(Console.ReadLine());
+                        if (WithdrawAmount > balance) Console.WriteLine("Insufficient funds");
+                        else { balance -= WithdrawAmount; Console.WriteLine($"Withdrawal succesful,New balance:{balance}"); }
 
-            //        break;
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter the amount to deposit: ");
+                        double Deposit = double.Parse(Console.ReadLine());
+                        balance += Deposit;
+                        Console.WriteLine($"Succeful depost \nNew balance:{balance}");
 
-            //    default:
-            //        Console.WriteLine("This choies Not Found!!");
-            //        break;
-            //---------------------------------------------------------------------------
+                        break;
 
-            //4. Factorial of a Number  
+                    case 3:
+                        Console.WriteLine("Your current balance is :" + balance);
+                        break;
+                    case 4:
 
-            //Console.WriteLine("Enter the Num:");
-            //int n = int.Parse(Console.ReadLine());
-            //int factorial=1 ;
+                        return;
+                    default:
+                        Console.WriteLine("Invaild choies,plesce select the correct choies");
 
-            //int i = 1;
-            //while (i <= n)
-            //{
-            //    factorial *= i;
-            //    i++;
-            //}
-            //Console.WriteLine("The factorial of " + n +" is" + factorial);
+                        break;
+                }
 
-            //--------------------------------------------------------------------
+            }
+        }
+        //3.Geometry Calculator
+        static void GeometryCalculator()
+        {
 
-            //2. Basic ATM System 
+            Console.WriteLine("choos one shapes: \n");
 
-            //        do
-            //        {
+            Console.WriteLine("1. Circle (Calculate Area & Circumference),2. Square (Calculate Area & Perimeter),3. Triangle (Calculate Area) \n ");
+            char shape = char.Parse(Console.ReadLine());
 
-            //            Console.WriteLine("Select serves");
-            //            Console.WriteLine("1. Withdraw Money.\n2. Deposit Money.\n3. Check Balance.\n4.Exit.");
-            //            char choice = char.Parse(Console.ReadLine());
-            //            Console.WriteLine("Enter the amount:");
-            //            int amount = int.Parse(Console.ReadLine());
-            //            int balance = 1000;
-            //            double result = 0;
-            //            bool isActive = false;
-            //            string choies = Console.ReadLine();
-            //            bool exit = false;
+            switch (shape)
+            {
+                case '1':
+                    Console.WriteLine("Enter the redius: \n");
+                    double redius = double.Parse(Console.ReadLine());
+                    double area = Math.PI * redius * redius;
+                    double Circumference = 2 * Math.PI * redius;
+                    Console.WriteLine("Area: " + area + "\nCircumference " + Circumference);
 
-            //            switch (choice)
-            //            {
-            //                case '1':
-            //                    Console.WriteLine("Enter Amount to withdraw");
-            //                    int WithdrawAmount = int.Parse(Console.ReadLine());
-            //                    if (WithdrawAmount <= balance)
-            //                    {
-            //                        balance -= WithdrawAmount;
-            //                    }
-            //                    else
-            //                    {
-            //                        Console.WriteLine("Invalid, Plese enter correct balenc");
-            //                    }
-            //                    break;
-            //                case '2':
-            //                    Console.WriteLine("Enter the amount to deposit: ");
-            //                    int Deposit = int.Parse(Console.ReadLine());
-            //                    balance += Deposit;
-            //                    Console.WriteLine("Succeful depost" + Deposit);
+                    break;
+                case '2':
+                    Console.WriteLine("Enter the side: \n");
+                    double side = double.Parse(Console.ReadLine());
+                    area = side * side;
+                    double Perimeter = 4 * side;
+                    Console.WriteLine("Area: " + area + "\nPerimeter: " + Perimeter);
+                    break;
 
-            //                    break;
+                case '3':
+                    Console.WriteLine("Enter height:\n");
+                    double height = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Enter height:\n");
+                    double length = double.Parse(Console.ReadLine());
+                    area = 0.5 * length * height;
+                    Console.WriteLine("Area: " + area);
 
-            //                case '3':
-            //                    Console.WriteLine("your current balance is :" + balance);
-            //                    break;
-            //                case '4':
-            //                    Console.WriteLine("Thank You, See you soon");
-            //                    break;
-            //                default:
-            //                    Console.WriteLine("Invaild choies,plesce select the correct choies");
-            //                    isActive = true;
-            //                    break;
-            //            }
+                    break;
 
-            //        }
-            //}
+                default:
+                    Console.WriteLine("This choies Not Found!!");
+                    break;
+            }
+        }
 
 
 
-            //---------------------------------------------------------------------------------------
-            //6. Scientific Calculator (Switch-Case & Math Functions) 
-            //Console.WriteLine("choos an operation \n1.sin\n2.cos\n3.tan\n4.sqrt\n5.log\n6.pow");
-            //char Op = char.Parse(Console.ReadLine());
+        //4.Factorial of a Number  
+        static void Factorial()
+        {
+
+            Console.WriteLine("Enter the Num:");
+            int n = int.Parse(Console.ReadLine());
+            int factorial = 1;
+
+            int i = 1;
+            while (i <= n)
+            {
+                factorial *= i;
+                i++;
+            }
+            Console.WriteLine("The factorial of " + n + " is" + factorial);
+
+        }
+        
+        //5.Sum of Even and Odd Numbers 
+        static void SumEvenOdd()
+        {
+            Console.WriteLine("Enter the number value");
+            int n = int.Parse(Console.ReadLine());
+
+            int oddNum = 0;
+            int sumEven = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                if (i % 2 == 0) sumEven += i; else oddNum += i;
+                Console.WriteLine("sum of even number:" + sumEven + "sum of odd number:" + oddNum);
+
+            }
+        }
 
 
-            //double result = 0;
-            //switch (Op)
-            //{
-            //    case '1':
-            //        Console.WriteLine("Enter the Number:");
-            //        double Nsin = double.Parse(Console.ReadLine());
-            //        result = Math.Sin(Nsin);
-            //        Console.WriteLine(result);
-            //        break;
-            //    case '2':
-            //        Console.WriteLine("Enter the Number:");
-            //        double Ncos= double.Parse(Console.ReadLine());
-            //        result = Math.Cos(Ncos);
-            //        Console.WriteLine(result);
-            //        break;
-            //    case '3':
-            //        Console.WriteLine("Enter the Number:");
-            //        double Ntan = double.Parse(Console.ReadLine());
-            //        result = Math.Tan(Ntan);
-            //        Console.WriteLine(result);
-            //        break;
-            //    case '4':
-            //        Console.WriteLine("Enter the Number:");
-            //        double Nsqrt = double.Parse(Console.ReadLine());
-            //        result = Math.Sqrt(Nsqrt);
-            //        Console.WriteLine(result);
-            //        break;
-            //    case '5':
-            //        Console.WriteLine("Enter the Number:");
-            //        double Nlog = double.Parse(Console.ReadLine());
-            //        result = Math.Log(Nlog); ;
-            //        Console.WriteLine(result);
 
-            //        break;
-            //    case '6':
-            //        Console.WriteLine("Enter the pow:");
-            //        double Npow = double.Parse(Console.ReadLine());
-            //        Console.WriteLine("Enter the Number:");
-            //        double Npow1= double.Parse(Console.ReadLine());
-            //        result = Math.Pow(Npow, Npow1);
-            //        Console.WriteLine(result);
-            //        break;
-            //    default:
-            //           Console.WriteLine("This choies Not Found!!");
-            //              break;
-
-            //}
-            //--------------------------------------------------------------------------------------------------------------------------------------------
-
-            //7 . Print Pattern (For Loop) 
-
-            //Console.WriteLine("Enter the number N:");
-            //int n = int.Parse(Console.ReadLine());
-
-            //for(int i = 1; i <= n; i++)
-            //{
-            //    for (int j = 1; j <= i; j++)
-            //    {
-            //        console.write("* ");
-            //    }
-            //    Console.WriteLine(x);
-            //    
-            //}
-            //--------------------------------------------------------------------------------------------------------------
+            //6.Scientific Calculator(Switch - Case & Math Functions)
+            static void ScientificCalculator()
+            {
+                Console.WriteLine("choos an operation \n1.sin\n2.cos\n3.tan\n4.sqrt\n5.log\n6.pow");
+                char Op = char.Parse(Console.ReadLine());
 
 
-            ////Print a Pyramid Pattern (For Loop)
+                double result = 0;
+                switch (Op)
+                {
+                    case '1':
+                        Console.WriteLine("Enter the Number:");
+                        double Nsin = double.Parse(Console.ReadLine());
+                        result = Math.Sin(Nsin);
+                        Console.WriteLine(result);
+                        break;
+                    case '2':
+                        Console.WriteLine("Enter the Number:");
+                        double Ncos = double.Parse(Console.ReadLine());
+                        result = Math.Cos(Ncos);
+                        Console.WriteLine(result);
+                        break;
+                    case '3':
+                        Console.WriteLine("Enter the Number:");
+                        double Ntan = double.Parse(Console.ReadLine());
+                        result = Math.Tan(Ntan);
+                        Console.WriteLine(result);
+                        break;
+                    case '4':
+                        Console.WriteLine("Enter the Number:");
+                        double Nsqrt = double.Parse(Console.ReadLine());
+                        result = Math.Sqrt(Nsqrt);
+                        Console.WriteLine(result);
+                        break;
+                    case '5':
+                        Console.WriteLine("Enter the Number:");
+                        double Nlog = double.Parse(Console.ReadLine());
+                        result = Math.Log(Nlog); ;
+                        Console.WriteLine(result);
 
-            //Console.WriteLine("enter number of rows : ");
-            //int n = int.Parse(Console.ReadLine());
+                        break;
+                    case '6':
+                        Console.WriteLine("Enter the pow:");
+                        double Npow = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the Number:");
+                        double Npow1 = double.Parse(Console.ReadLine());
+                        result = Math.Pow(Npow, Npow1);
+                        Console.WriteLine(result);
+                        break;
+                    default:
+                        Console.WriteLine("This choies Not Found!!");
+                        break;
 
+                }
+            }
 
-            //for (int i = 1; i <= n; i++)
-            //{
-            //    for (int j = n - i; j >= 1; j--)
-            //    {
-            //        Console.Write(" ");
-            //    }
+            //7.Print Pattern(For Loop)
+            static void PrintTriangle()
+            {
 
-            //    for (int k = 1; k <= i * 2 - 1; k++)
-            //    {
-            //        Console.Write("*");
-            //    }
+                Console.WriteLine("Enter the number N:");
+                int n = int.Parse(Console.ReadLine());
 
-            //    Console.WriteLine();
-            //}
-            //--------------------------------------------------------------------------------------------------------------
-            //9. Print a Diamond Pattern (For Loop)
-            //Console.WriteLine("enter row number");
-            //int n = int.Parse(Console.ReadLine());
-            //for (int i = 1; i <= n; i++)
-            //{
-            //    for (int j = n - i; j >= 1; j--)
-            //    {
-            //        Console.Write(" ");
-            //    }
+                for (int i = 1; i <= n; i++)
+                {
+                    for (int j = 1; j <= i; j++)
+                    {
+                        Console.Write("* ");
+                    }
+                    Console.WriteLine();
 
-            //    for (int k = 1; k <= i * 2 - 1; k++)
-            //    {
-            //        Console.Write("*");
-            //    }
+                }
+            }
 
-            //    Console.WriteLine();
-            //}
-            //for (int i = n-1;i>=1;i--)
-            //{
-            //    for (int j =0; j <n-1;j++)
-            //    {
-            //        Console.Write(" ");
-            //    }
+        
+        //8.Print a Pyramid Pattern (For Loop)
+        static void PrintPyramid()
+        {
 
-            //    for (int j = 0; j <= 2*i-1;j++)
-            //    {
-            //        Console.Write("*");
-            //    }
+            Console.Write("Enter N: ");
+            int n = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+                Console.WriteLine(new string(' ', n - i) + new string('*', 2 * i - 1));
 
-            //    Console.WriteLine();
-            //}
-            //----------------------------------------------------------------------------
-            //. Sum of Even and Odd Numbers 
-            //Console.WriteLine("Enter the number value");
-            //int n = int.Parse(Console.ReadLine());
+        }
 
-            //int oddNum = 0;
-            //int sumEven = 0;
-            //for(int i=1;i<=n;i++)
-            //{
-            //    if (i % 2 == 0)
-            //    {
-            //        sumEven += i;
-            //    }else
-            //    {
-            //        oddNum += i;
-            //        Console.WriteLine("sum of even number:" + sumEven + "sum of odd number:" + oddNum);
-            //    }
-            //}
-            //--------------------------------------------------------------------------------------------------------
+        // 9. Print Diamond Pattern
+        static void PrintDiamond()
+        {
+            Console.Write("Enter N: ");
+            int n = int.Parse(Console.ReadLine());
 
-                
+            // Upper part of the diamond
+            for (int i = 1; i <= n; i++)
+            {
+                PrintRow(i, n);
+            }
+
+            // Lower part of the diamond
+            for (int i = n - 1; i >= 1; i--)
+            {
+                PrintRow(i, n);
+            }
+
 
 
         }
-    }
+
+        //  10.Guess Game
+        static void GuessGame()
+            {
+                Random rand = new Random();
+                int target = rand.Next(1, 101);
+                int gues;
+
+                do
+                {
+                    Console.WriteLine("Guess the number (1-100): ");
+                    gues = int.Parse(Console.ReadLine());
+                    if (gues > target)
+                        Console.WriteLine("Try Lower!");
+                    else if (gues < target)
+                        Console.WriteLine("Try Higher!");
+                    else
+                        Console.WriteLine("You Win!!");
 
 
+
+                } while (gues != target);
+
+
+            }
+        
+        static void PrintRow(int i, int n)
+        {
+
+            for (int j = 0; j < n - i; j++)
+                Console.Write(" ");
+
+            for (int j = 0; j < 2 * i - 1; j++)
+                Console.Write("*");
+
+            Console.WriteLine();
+        }
     }
+}
+
+
+    
 
                 
         
